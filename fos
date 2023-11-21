@@ -1,0 +1,268 @@
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+#include <time.h>
+#include <stdlib.h>
+
+void option();
+void menu();
+
+int qty = 0;
+int sizeNo,Total_Amount;
+int flavour;
+float enter,Total_Balance,costumerMoney,subTotal,costumerChange;
+int qtyP;
+char name[100];
+char buffer[100];
+
+int Price[][10]= {{250, 250, 230, 200, 200, 260, 185, 195, 155, 200}, 
+				  {280, 275, 260, 225, 225, 285, 210, 220, 175, 225},
+				  {310, 300, 285, 285, 250, 310, 235, 250, 190, 250}};	
+
+char size[][100]= {"SHORT", "TALL", "GRANDE"};
+
+char productName[][100]= {
+"Flat White\t\t", "Caramel Macchiato\t", "Caffe Mocha\t\t", "Caffe Latte\t\t","Cappuccino\t\t",
+"Chocolate Cappuccino\t","Americano\t\t","Brewed Coffee\t\t","Espresso Macchiato\t","Signature Hot Chocolate\t",};
+
+void slct(){
+	int a;
+	while(a != EOF && a != '\n'){
+
+		a = getchar();
+	}
+}
+
+int choice(int choicem, int choiceM){
+	float enter, enterR;
+
+	printf(": ");
+	enterR = scanf("%f", &enter);
+
+	if(enterR == EOF){
+
+		printf("\n\n\t\t\tEnd of File");
+		slct();
+		printf("\n\n\t\t\tPress any key to continue..");
+		getch();
+		main();
+	}
+
+	else if(enterR == 0){
+
+		printf("\n\n\t\t\tInvalid input");
+		slct();
+		printf("\n\n\t\t\tPress any key to continue..");
+		getch();
+		main();
+	}
+
+	else if(enter < choicem || enter > choiceM){
+
+		printf("\n\n\t\tPlease select from range [%d-%d]", choicem, choiceM);
+		slct();
+		printf("\n\n\t\tPress any key to continue..");
+		getch();
+		main();
+	}
+
+	else{
+
+		return enter;
+	}
+}
+
+int main(){
+	system("cls");
+	int Loading_dot, a;
+	
+	printf("\n\n\n\n\n\n\n\n\n\t\t\t\tLoading");
+		
+	for(Loading_dot = 0; Loading_dot < 6; Loading_dot++){
+	
+		a = Loading_dot;
+		printf(" . ");
+		Sleep(250);
+	}
+	
+	printf("\n\n\n\t\t\t\tTHANK YOU FOR WAITING!");
+	Sleep(300);
+    option();
+
+}
+
+
+void option(){
+
+    system("cls");
+	printf("\n\t\t   ===============================================");
+	printf("\n\t\t          FOOD         ORDERING       SYSTEM ");
+	printf("\n\t\t   ===============================================\n");
+	printf("\n\t\t       ===========    =========      ==========  ");
+	printf("\n\t\t       ===========   ===========   ===========   ");
+	printf("\n\t\t       ===           ===     ===   ====          ");
+	printf("\n\t\t       ========      ===     ===   =======       ");
+	printf("\n\t\t       =======       ===     ===     ========    ");
+	printf("\n\t\t       ===           ===     ===        ======   ");
+	printf("\n\t\t       ===           ===     ===          ====   ");
+	printf("\n\t\t       ===           ===========   ===========   ");
+	printf("\n\t\t       ===            =========   ==========    \n");
+	printf("\n\t\t   ===============================================");
+	printf("\n\t\t   Created by Under Coder | Jomar | Kyle | Gabriel");	
+	printf("\n\t\t   ===============================================\n\n");
+    printf("\n\t\t\t======================================\n");
+	printf("\t\t\t\tEnter [1] to proceed ");
+	printf("\n\t\t\t======================================\n");
+	
+	printf("\n\t\t\t  NOTE: Input a number range (1-1) ");
+	
+	int enter;
+	printf("\n\n\t\t\t\tPlease enter mode");
+
+	enter = choice(1,1);
+	
+	switch(enter){
+		case 1:
+			menu();
+			break;
+	}
+	
+}	
+
+void menu(){
+	char anotherOrder;
+    int noOfFlavour = 10; //editable depends how many product will sell.
+    
+	int productNameQTY[noOfFlavour];
+	char receiptP[qtyP][100];
+	char receiptSize[qtyP][100];
+	int i = 0;
+		
+	for(i = 0; i < noOfFlavour ; i++){
+	    productNameQTY[i] = 0;
+    }
+	Total_Amount= 0;
+	Total_Balance = 0;
+	
+
+do {
+	
+	system("cls");
+	printf("\t\t=================================Coffee Menu============================   \n\n");
+	printf("\t\t [Flavor]                                [1] Short   [2] Tall   [3] Grande  \n");
+	printf("\t\t  [1] Flat White                            250         280        310     \n");
+	printf("\t\t  [2] Caramel Macchiato                     250         275        300     \n");
+	printf("\t\t  [3] Caffe Mocha / White Mocha             230         260        285     \n");
+	printf("\t\t  [4] Caffe Latte                           200         225        285     \n");
+	printf("\t\t  [5] Cappuccino                            200         225        250     \n");
+	printf("\t\t  [6] Chocolate Cappuccino                  260         285        310     \n");
+	printf("\t\t  [7] Americano                             185         210        235     \n");
+	printf("\t\t  [8] Brewed Coffee                         195         220        250     \n");
+	printf("\t\t  [9] Espresso / Espresso Macchiato         155         175        190     \n");
+	printf("\t\t  [10] Signature Hot Chocolate              200         225        250     \n\n");
+	printf("\t\t=========================================================================");
+	printf("\n\n\t\t========================================================================");
+	printf("\n\t\t\tNOTE: Input a number range (ex: 1-1.99 considered as 1) ");
+	printf("\n\t\t========================================================================\n");
+
+    printf("\n\t\tChoose flavor");
+	flavour = choice(1,10);
+	
+	printf("\n\t\tFlavor selected is %s",productName[flavour - 1]);
+    printf("\n\t\tChoose Size");
+	sizeNo = choice(1,3);
+	
+	printf("\n\t\tSize selected is %s",size[sizeNo - 1]);
+	printf("\n\t\tQuantity ");
+	qty = choice(0,1000); // quantity range 0 - 1000, this is adjustable.
+
+	productNameQTY[flavour-1] = productNameQTY[flavour - 1] + qty;	
+	Total_Amount = qty*Price[sizeNo-1][flavour-1];
+    
+	printf("\n\t\tTotal Amount: %d",Total_Amount);
+    
+	Total_Balance = Total_Balance+Total_Amount;
+	printf("\n\t\tTotal Balance: %.2f",Total_Balance);
+    
+	printf("\n\n\t\tPress [Y] to add another order? ");
+	anotherOrder = getch();
+				
+    } while (anotherOrder == 'y' || anotherOrder == 'Y' );
+
+	char name[100];
+	printf("\n\n\t\tEnter Costumer's name: ");
+  	scanf("%s", name);
+
+    printf("\n\t\tEnter Costumer's Money: ");
+	costumerMoney = choice(0, 100000000);
+	
+
+	//declares that the costumer's money are not enought to buy the product selected.
+	while (costumerMoney<Total_Balance){
+		float need;
+		char receiptP[qtyP][100];
+		need = Total_Balance - costumerMoney;
+		system("cls");
+		printf("\n\t\t =========================================================");
+		printf("\n\t\t\t\t     !!!!! WARNING !!!!!  \n");
+		printf("\t\t =========================================================");
+		printf("\n\n\t\t   Costumer needs to add: \t\t\t %.2f",need);
+		printf("\n\n\t\t (Please input exact amount or more than the total balance) ");
+		printf("\n\t\t =========================================================");
+		printf("\n\t\t\t\t    !!!!! TRY AGAIN !!!!!  \n");
+		printf("\t\t =========================================================");
+		anotherOrder = getch();
+		Total_Balance = 0;
+		noOfFlavour = 0;
+		menu();
+	}
+
+	time_t current_time = time(NULL); // Get the current time
+    struct tm *time_info = localtime(&current_time); // Convert it to a struct tm
+    strftime(buffer, sizeof(buffer), "%c", time_info); // Use the strftime() function to format the date and time
+
+    system("cls");
+	printf("\n\t\t===================== >>>> RECEIPT <<<< =================== \n");
+	printf("\n\t\t ITEM/S:                                        QUANTITY");
+
+	int ii, state = 0;
+
+	// this loop is to gather the item/s and quantity/s that you have selected.
+	for(i = 0; i < noOfFlavour; i++){
+
+		if(productNameQTY[i] != 0){
+			printf("\n\n\t\t       %s \t\t  x %d", productName[i], productNameQTY[i]);
+		}
+
+	}
+	
+	printf("\n\t\t _________________________________________________________");
+	printf("\n\n\t\t TOTAL: \t\t\t\t\t %.2f",Total_Balance);
+	printf("\n\n\t\t CASH: \t\t\t\t\t\t %.2f",costumerMoney);
+	
+	//print the exact or greater than th total ballance
+	costumerChange = costumerMoney - Total_Balance;
+	if (costumerMoney>=Total_Balance){
+		printf("\n\n\t\t CHANGE: \t\t\t\t\t %.2f",costumerChange);
+	}
+	
+	printf("\n\t\t _________________________________________________________\n");
+	printf("\t\t Costumer's Name: %s", name);
+	printf("\n\t\t Sold to: Under Coder Cafe");
+	printf("\n\t\t Contact: 09105301898");
+	printf("\n\t\t Address: Brgy. Acosta, Batac City, Ilocos Norte");
+	printf("\n\t\t Date and Time: %s\n", buffer);
+	printf("\n\t\t==================== >>>> UNDER CODER <<<< ================= ");
+	
+	printf("\n\n\n\t\t Press [Y] to add new another order or Press [Enter] to exit"); 
+	anotherOrder = getch(); //if user input a-x and z or A-X and Z or a number it will read as exit
+	
+	if (anotherOrder == 'y' || anotherOrder == 'Y'){ 	//This will erase the current ordered item/s and quantity.
+		Total_Balance = 0;
+		menu();
+	}
+	
+	exit(1);
+
+}
+
