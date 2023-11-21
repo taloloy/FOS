@@ -108,7 +108,7 @@ void option(){
 	printf("\n\t\t       ===           ===========   ===========   ");
 	printf("\n\t\t       ===            =========   ==========    \n");
 	printf("\n\t\t   ===============================================");
-	printf("\n\t\t   Created by Under Coder | Jomar | Kyle | Gabriel");	
+	printf("\n\t\t   Created by Under Coder | Harry | Varenz | Gabriel");	
 	printf("\n\t\t   ===============================================\n\n");
     printf("\n\t\t\t======================================\n");
 	printf("\t\t\t\tEnter [1] to proceed ");
@@ -250,7 +250,7 @@ do {
 	printf("\t\t Costumer's Name: %s", name);
 	printf("\n\t\t Sold to: Under Coder Cafe");
 	printf("\n\t\t Contact: 09105301898");
-	printf("\n\t\t Address: Brgy. Acosta, Batac City, Ilocos Norte");
+	printf("\n\t\t Address: Dao, Tagbilaran, Bohol");
 	printf("\n\t\t Date and Time: %s\n", buffer);
 	printf("\n\t\t==================== >>>> UNDER CODER <<<< ================= ");
 	
